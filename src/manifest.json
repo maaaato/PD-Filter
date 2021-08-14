@@ -1,0 +1,28 @@
+{
+    "name": "PD Filter",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Filter for PagerDuty",
+    "permissions": [
+        "storage",
+        "background",
+        "contextMenus"
+    ],
+    "content_scripts": [{
+      "matches": ["https://standio.pagerduty.com/reports/*"],
+      "js": [
+        "content.js"
+      ]
+    }],
+    "background": {
+        "matches": [
+        ],
+        "scripts": [
+          "background.js"
+        ]
+    },
+    "browser_action": {
+        "default_title": "BBPicker",
+        "default_popup": "popup.html"
+    }
+  }
