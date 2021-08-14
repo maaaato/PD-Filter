@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function () {
     const child = chrome.contextMenus.create({
       id: "child1",
       parentId: "parent",
-      title: val,
+      title: val ? val : "undefined",
     });
   })();
 });
