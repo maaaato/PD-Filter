@@ -14,6 +14,7 @@ window.onload = () => {
         filter_value: filterValue.value,
       },
       () => {
+        updateChild("child1", filterValue.value);
         execFilter();
         messageEl.textContent = "Saved";
         setTimeout(() => (messageEl.textContent = ""), 750);
@@ -21,3 +22,7 @@ window.onload = () => {
     );
   };
 };
+
+function updateChild(childId, title) {
+  chrome.contextMenus.update(childId, { title: title });
+}

@@ -10,6 +10,7 @@
     "persistent": false
   },
   "browser_action": {
+    "scripts": ["background.js"],
     "default_title": "PD Filter",
     "default_popup": "popup.html"
   }

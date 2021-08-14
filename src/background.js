@@ -1,11 +1,11 @@
 chrome.runtime.onInstalled.addListener(function () {
   (async () => {
-    var val = await getStorageLocalData();
+    const val = await getStorageLocalData();
     const parent = chrome.contextMenus.create({
       id: "parent",
       title: "PD Filter",
     });
-    chrome.contextMenus.create({
+    const child = chrome.contextMenus.create({
       id: "child1",
       parentId: "parent",
       title: val,
