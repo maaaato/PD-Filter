@@ -4,6 +4,11 @@
   "manifest_version": 2,
   "description": "Filter for PagerDuty",
   "permissions": ["storage", "background", "contextMenus"],
+  "content_scripts": [
+    {
+      "js": ["filter.js"]
+    }
+  ],
   "background": {
     "matches": [],
     "scripts": ["filter.js", "background.js"],
