@@ -1,9 +1,20 @@
-const onClick = () => (_, tab) => chrome.tabs.sendMessage(tab.id, '');
+chrome.runtime.onInstalled.addListener(function () {
+  (async () => {
+    var val = await getStorageLocalData();
+    const parent = chrome.contextMenus.create({
+      id: "parent",
+      title: "PD Filter",
+    });
+    chrome.contextMenus.create({
+      id: "child1",
+      parentId: "parent",
+      title: val,
+    });
+  })();
+});
 
-chrome.contextMenus.create({
-    title : 'DRMaker',
-    type : 'normal',
-    contexts : ['all'],
-    id: 'parent_id',
-    onclick : onClick()
+chrome.contextMenus.onClicked.addListener(function (item) {
+  if (item.menuItemId === "child1") {
+    execFilter();
+  }
 });
