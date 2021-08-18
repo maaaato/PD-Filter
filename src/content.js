@@ -12,12 +12,10 @@ function getStorageLocalData() {
     });
   });
 }
-
 async function execFilter() {
   var disc = document.getElementsByClassName("x-column-description");
   var len = disc.length;
   var val = await getStorageLocalData();
-
   for (var i = 0; i < len; i++) {
     var result = disc[i].firstChild.textContent.indexOf(val);
     if (result === -1) {
@@ -25,3 +23,8 @@ async function execFilter() {
     }
   }
 }
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  execFilter();
+  sendResponse("from content");
+});
